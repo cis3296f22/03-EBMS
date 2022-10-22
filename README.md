@@ -1,5 +1,5 @@
-# Project Name
-Put here a short paragraph describing your project. 
+# Electronic Billboard Management System built with Next.js
+The Electronic Billboard Management System is a web application built with Next.js that will bring the simplicity of digital ad management to the physical world. From this web application, Digital Signage Owners can register their billboards and set a per-minute rate for advertising on said billboard. Advertisers can select a billboard that fits their budget, pick a time slot, and then purchase ad space through a payment gateway system integration. Once ad space is purchased, Advertisers will be able to upload an image to be displayed on the billboard during their scheduled time slot.
 Adding an screenshot or a mockup of your application in action would be nice.  
 
 ![This is a screenshot.](images.png)
