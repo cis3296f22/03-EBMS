@@ -3,26 +3,22 @@ The Electronic Billboard Management System is a web application built with Next.
 Adding an screenshot or a mockup of your application in action would be nice.  
 
 ![This is a screenshot.](images.png)
-# How to run
+# How to build and run
 Provide here instructions on how to use your application.   
-- Download the latest binary from the Release section on the right on GitHub.  
-- On the command line uncompress using
+- Download the repository
+- Download Node.js v17.3.0
+- Download NPM (node package manager)
+
+- Install packages:
 ```
-tar -xzf  
+npm i 
 ```
-- On the command line run with
+- To start the webapp:
 ```
-./hello
+npm run build
+npm run dev
 ```
-- You will see Hello World! on your terminal. 
+- You will see the website on at the URL "localhost:3000". 
 
 # How to contribute
 Follow this project board to know the latest status of the project: [https://github.com/orgs/cis3296f22/projects/106](https://github.com/orgs/cis3296f22/projects/106)  
-
-### How to build
-- Use this github repository: ... 
-- Specify what branch to use for a more stable release or for cutting edge development.  
-- Use InteliJ 11
-- Specify additional library to download if needed 
-- What file and target to compile and run. 
-- What is expected to happen when the app start. 
