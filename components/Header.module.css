@@ -1,0 +1,30 @@
+.header {
+  width: 100%;
+  height: fit-content;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: rgb(200, 200, 200);
+
+  position: fixed;
+  top: 0;
+}
+
+.headerWrapper {
+  width: 70%;
+  max-width: 1170px;
+  height: 75px;
+
+  display: flex;
+  justify-content: center;
+}
+
+
+
+@media only screen and (min-width: 600px) {
+  .headerWrapper {
+    justify-content: left;
+  }
+}
