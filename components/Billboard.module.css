@@ -1,20 +1,38 @@
 .billboardContainer {
-  width: fit-content;
+  width: 100%;
   height: 100px;
-  background-color: dimgray;
+  background-color: #F4F4F4;
   display: flex;
   border-radius: 20px;
-  color: white;
+  color: black;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 20px;
   padding: 10px;
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
+  user-select:none;
+  transition: filter 0.75s;
+}
+
+.billboardContainer:hover {
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
+  transition: filter 0.5s;
+}
+
+.selected {
+  filter: drop-shadow(0px 0px 4px rgba(161, 13, 230, 0.5));
+  transition: filter 0.5s;
+}
+
+.selected:hover {
+  filter: drop-shadow(0px 0px 4px rgba(161, 13, 230, 0.75));
+  transition: filter 0.5s;
 }
 
 .billboardImage {
   width: 144px;
   height: 100%;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .descriptionContainer {
