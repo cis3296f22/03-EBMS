@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from './NavigationButton.module.css'
 
-function NavigationButton({text}:{text:any}) {
+function NavigationButton({text}) {
   return (
     <a className={styles.navButton}>
       {text}
