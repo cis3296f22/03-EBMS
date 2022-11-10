@@ -2,14 +2,7 @@ import React from 'react'
 
 import styles from './Billboard.module.css'
 
-type BillboardProps = {
-  imgSrc: string,
-  size: String,
-  rate: String,
-  location: String
-}
-
-function Billboard({imgSrc, size, rate, location}: BillboardProps) {
+function Billboard({imgSrc, size, rate, location}) {
 
   return (
     <div className={styles.billboardContainer}>
