@@ -3,7 +3,7 @@
   height: 100%;
   width: fit-content;
 
-  padding: 20px;
+  padding: 30px;
 
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@
   box-sizing: border-box;
   border-bottom: 2px solid transparent;
 
-  font-size: 1em;
+  font-size: 1.5em;
   font-weight: 300;
 
   cursor: pointer;

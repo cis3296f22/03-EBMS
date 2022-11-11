@@ -10,8 +10,8 @@ function Logo() {
       <Image
         src="/logo.png"
         alt="Billboard logo"
-        width={140}
-        height={25}
+        width={195}
+        height={35}
       />
     </div>
   )
