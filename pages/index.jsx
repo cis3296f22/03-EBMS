@@ -3,6 +3,8 @@ import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
 import Header from '../components/Header'
+import Billboard from '../components/Billboard'
+import billboardListings from '../public/listings'
 
 export default function Home() {
   return (
@@ -15,13 +17,20 @@ export default function Home() {
 
       <Header/>
 
-      Electronic Billboard Management System
+      <div style={{width: "550px"}}>
+        {React.Children.toArray(billboardListings.map((props) => {
+          return <Billboard {...props}/>
+        }))}
+      </div>
+
+      {/* Electronic Billboard Management System
       <button value="login">Login</button>
       <button value="signup" >
         <Link href="/create">
           Sign Up
         </Link>
-      </button>
+      </button> */}
+      
     </div>
   )
 }
