@@ -22,7 +22,7 @@ function Header() {
       <div style={{backgroundColor: ""}} className={styles.headerWrapper}>
         <Logo/>
         { navButtons.map((item) => {
-          return <NavigationButton text={item.text}></NavigationButton>
+          return <NavigationButton key={item.text} text={item.text}></NavigationButton>
         })}
         {/* <Search></Search> */}
       </div>
