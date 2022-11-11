@@ -17,7 +17,7 @@ export default function Home() {
 
       <Header/>
 
-      <div style={{width: "550px"}}>
+      <div style={{width: "800px"}}>
         {React.Children.toArray(billboardListings.map((props) => {
           return <Billboard {...props}/>
         }))}
