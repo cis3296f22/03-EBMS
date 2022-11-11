@@ -5,7 +5,9 @@ import styles from './NavigationButton.module.css'
 function NavigationButton({text}) {
   return (
     <a className={styles.navButton}>
-      {text}
+      <div className={styles.textContainer}>
+        {text}
+      </div>
     </a>
   )
 }
