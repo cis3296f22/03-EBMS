@@ -12,9 +12,9 @@ export default function Test() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {billboardListings.map((props) => {
-        return <Billboard {...props}/>
-      })}
+      {React.Children.toArray(billboardListings.map((props) => {
+          return <Billboard {...props}/>
+        }))}
     </div>
   )
 }
