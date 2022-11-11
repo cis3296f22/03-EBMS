@@ -4,8 +4,6 @@ import Billboard from '../components/Billboard'
 import billboardListings from '../public/listings'
 
 export default function Test() {
-  
-
   return (
     <div style={{width: "475px", backgroundColor:"#FFFFFF"}}>
       <Head>
@@ -14,9 +12,9 @@ export default function Test() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {React.Children.toArray(billboardListings.map((props) => {
+      {billboardListings.map((props) => {
         return <Billboard {...props}/>
-      }))}
+      })}
     </div>
   )
 }
