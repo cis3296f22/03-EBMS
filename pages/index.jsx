@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Header from '../components/Header'
 import Billboard from '../components/Billboard'
 import billboardListings from '../public/listings'
+import { useSession, signIn, signOut } from "next-auth/react"
 
 export default function Home() {
   return (
@@ -22,7 +23,7 @@ export default function Home() {
           return <Billboard {...props}/>
         }))}
       </div>
-
+        
       {/* Electronic Billboard Management System
       <button value="login">Login</button>
       <button value="signup" >
