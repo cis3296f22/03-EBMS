@@ -24,7 +24,7 @@ const Login = () => {
   }
   return (
     <a className={styles.navButton}>
-      <div id="SignIn" onClick={() => signIn()}>
+      <div id="SignIn" onClick={() => signIn(['google'])}>
       Sign In
       </div>
     </a>
