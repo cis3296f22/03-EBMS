@@ -9,12 +9,15 @@ function Header() {
   let navButtons = [
     {
       text: "Create",
+      link: "/create"
     },
     {
       text: "Search",
+      link: "/search"
     },
     {
-      text: "Manage"
+      text: "Manage",
+      link: "/manage"
     }
   ]
 
@@ -23,7 +26,7 @@ function Header() {
       <div style={{backgroundColor: ""}} className={styles.headerWrapper}>
         <Logo/>
         { navButtons.map((item) => {
-          return <NavigationButton key={item.text} text={item.text}></NavigationButton>
+          return <NavigationButton key={item.text} text={item.text} link={item.link}></NavigationButton>
         })}
         {/* <Search></Search> */}
         <Login/>
