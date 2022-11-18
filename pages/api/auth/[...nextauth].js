@@ -15,7 +15,8 @@ export default NextAuth({
 })
 
 
-/* TESTING
+
+/* TESTING 
 export default NextAuth({
   secret: process.env.JWT_SECRET,
   providers: [

@@ -1,30 +1,18 @@
 import React from 'react';
-import { useSession, signIn, signOut } from "next-auth/react"
 import styles from './NavigationButton.module.css'
-import Image from 'next/image'
+import {supabase} from '../utils/supabaseClient';
 
+async function handleLogin() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'google'
+  })
+}
 
 const Login = () => {
-  const { data: session } = useSession()
 
-  var src
-
-  if(session){
-      src = session.user.image
-  }
-
-  if (session) {
-    return (
-      <a className={styles.navButton}>
-        <div onClick={() => signOut()}>
-            My Account
-        </div>
-      </a>
-    )
-  }
   return (
     <a className={styles.navButton}>
-      <div id="SignIn" onClick={() => signIn(['google'])}>
+      <div id="SignIn" onClick={handleLogin}>
       Sign In
       </div>
     </a>

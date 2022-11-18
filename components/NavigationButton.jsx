@@ -1,14 +1,15 @@
 import React from 'react'
 
 import styles from './NavigationButton.module.css'
+import Link from 'next/link'
 
-function NavigationButton({text}) {
+function NavigationButton({text, link}) {
   return (
-    <a className={styles.navButton}>
+    <Link href={link} className={styles.navButton}>
       <div className={styles.textContainer}>
         {text}
       </div>
-    </a>
+    </Link>
   )
 }
 
