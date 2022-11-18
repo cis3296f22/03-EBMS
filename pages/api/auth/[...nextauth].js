@@ -1,7 +1,7 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 
-/* PUBLISHING
+/* PUBLISHING */
 export default NextAuth({
   secret: process.env.JWT_SECRET,
   providers: [
@@ -13,10 +13,10 @@ export default NextAuth({
   ],
   debug: true,
 })
-*/
 
 
-/* TESTING */
+
+/* TESTING 
 export default NextAuth({
   secret: process.env.JWT_SECRET,
   providers: [
@@ -28,3 +28,4 @@ export default NextAuth({
   ],
   debug: true,
 })
+*/
