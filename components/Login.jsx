@@ -1,22 +1,23 @@
 import React from 'react';
-import { useSession, signIn, signOut } from "next-auth/react"
 import styles from './NavigationButton.module.css'
-import Image from 'next/image'
+import {session} from '@supabase/supabase-js'
+import LoginButton from '../pages/supabaseClient';
 
 
 const Login = () => {
-  const { data: session } = useSession()
 
-  var src
+  return (
+    <a className={styles.navButton}>
+      <div id="SignIn" onClick={LoginButton}>
+      Sign In
+      </div>
+    </a>
+  )
 
-  if(session){
-      src = session.user.image
-  }
-
-  if (session) {
+  if (sesh != null) {
     return (
       <a className={styles.navButton}>
-        <div onClick={() => signOut()}>
+        <div id="myAccount" onClick={logout}>
             My Account
         </div>
       </a>
@@ -24,7 +25,7 @@ const Login = () => {
   }
   return (
     <a className={styles.navButton}>
-      <div id="SignIn" onClick={() => signIn(['google'])}>
+      <div id="SignIn" onClick={loginGoogle}>
       Sign In
       </div>
     </a>
