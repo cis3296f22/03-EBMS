@@ -17,23 +17,6 @@ const Login = () => {
       </div>
     </a>
   )
-
-  if (sesh != null) {
-    return (
-      <a className={styles.navButton}>
-        <div id="myAccount" onClick={logout}>
-            My Account
-        </div>
-      </a>
-    )
-  }
-  return (
-    <a className={styles.navButton}>
-      <div id="SignIn" onClick={loginGoogle}>
-      Sign In
-      </div>
-    </a>
-  )
 }
 
 export default Login
