@@ -41,11 +41,6 @@ export default function Account({ session }) {
     }
   }
 
-  async function handleLogout(){
-    supabase.auth.signOut()
-
-  }
-
   async function updateProfile({ username, website, avatar_url }) {
     try {
       setLoading(true)

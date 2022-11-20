@@ -24,7 +24,7 @@ const SignIn = () => {
   const session = useSession()
   const supabase = useSupabaseClient()
 
-  if(!session){
+  if(!session)
     return (
       <a className={styles.navButton}>
         <div id="SignIn" className={styles.textContainer} onClick={handleLogin}>
@@ -32,14 +32,14 @@ const SignIn = () => {
         </div>
       </a>
     )
-  }
-  return (
-      <Link href={ {pathname: "/account", query: {session: session}} } className={styles.navButton}>
-        <div id="MyAccount" className={styles.textContainer}>
-          My Account
-        </div>
-      </Link>
-  )
+  else
+    return (
+        <Link href="/account" className={styles.navButton}>
+          <div id="MyAccount" className={styles.textContainer}>
+            My Account
+          </div>
+        </Link>
+    )
 }
 
 export default SignIn
