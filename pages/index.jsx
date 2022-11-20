@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import React from 'react'
-import Link from 'next/link'
 import Header from '../components/Header'
 import Billboard from '../components/Billboard'
 import billboardListings from '../public/listings'
