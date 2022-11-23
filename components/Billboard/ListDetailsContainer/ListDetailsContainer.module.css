@@ -1,0 +1,11 @@
+.listDetailContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 20px;
+  padding: 20px;
+
+  height: 90vh;
+  width: 100%;
+}
