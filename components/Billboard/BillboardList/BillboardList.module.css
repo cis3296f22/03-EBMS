@@ -8,4 +8,5 @@
   gap: 20px;
   flex-grow: 1;
   flex: 1 1 45%;
+  overflow-y: auto;
 }
