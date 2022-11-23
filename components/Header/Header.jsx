@@ -3,7 +3,8 @@ import React from 'react'
 import NavigationButton from '../NavigationButton/NavigationButton'
 import styles from './Header.module.css'
 import Logo from '../Logo/Logo'
-import Login from '../NavigationButton/Login'
+import styles from './Header.module.css'
+import SignIn from '../SignIn/SignIn'
 
 function Header() {
   let navButtons = [
@@ -29,7 +30,7 @@ function Header() {
           return <NavigationButton key={item.text} text={item.text} link={item.link}></NavigationButton>
         })}
         {/* <Search></Search> */}
-        <Login/>
+        <SignIn/>
       </div>
     </header>
   )
