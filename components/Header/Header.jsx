@@ -1,8 +1,9 @@
 import React from 'react'
-import NavigationButton from './NavigationButton'
+
+import NavigationButton from '../NavigationButton/NavigationButton'
 import styles from './Header.module.css'
-import Logo from './Logo'
-import SignIn from './SignIn'
+import Logo from '../Logo/Logo'
+import SignIn from '../SignIn/SignIn'
 
 function Header() {
   let navButtons = [
