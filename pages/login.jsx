@@ -1,21 +1,19 @@
-import React from 'react';
-import { useSession, signIn, signOut } from "next-auth/react"
+import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
+import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 
 const Login = () => {
-  const { data: session } = useSession()
-  if (session) {
-    return (
-      <>
-        Signed in as {session.user.email} <br />
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
-    )
-  }
+  const session = useSession()
+  const supabase = useSupabaseClient()
+
   return (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-    </>
+    <div className="container" style={{ padding: '50px 0 100px 0' }}>
+        <Auth 
+            providers={['google']}
+            supabaseClient={supabase} 
+            appearance={{ theme: ThemeSupa }} 
+            theme="light" 
+        />
+    </div>
   )
 }
 
