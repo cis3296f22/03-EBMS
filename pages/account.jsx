@@ -1,11 +1,6 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import React from 'react'
-import Header from '../components/Header'
-import Billboard from '../components/Billboard'
-import billboardListings from '../public/listings'
-import {supabase} from '../utils/supabaseClient';
-import Link from 'next/link'
+import Header from '../components/Header/Header'
 import { useSession, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 import Account from '../components/Account'
 

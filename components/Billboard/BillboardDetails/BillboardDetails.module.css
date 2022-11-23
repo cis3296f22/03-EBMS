@@ -1,0 +1,17 @@
+.billboardFullView {
+  height: 600px;
+  background-color: var(--primary-color);
+  color: var(--font-color);
+  padding: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+}
+
+.billboardFullViewContainer {
+  flex: 2 1 55%;
+  height: 100%;
+  
+}

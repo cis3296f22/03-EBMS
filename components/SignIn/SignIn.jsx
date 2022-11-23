@@ -1,10 +1,10 @@
 import {React, useState, useEffect} from 'react';
-import styles from './NavigationButton.module.css'
-import {supabase} from '../utils/supabaseClient';
+import styles from '../NavigationButton/NavigationButton.module.css'
+import {supabase} from '../../utils/supabaseClient';
 import Link from 'next/link'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
-import Account from './Account'
+import Account from '../Account'
 
 async function handleLogin() {
   const { data, error } = await supabase.auth.signInWithOAuth({

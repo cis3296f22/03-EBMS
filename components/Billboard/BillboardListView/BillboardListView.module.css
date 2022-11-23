@@ -1,22 +1,27 @@
-.billboardContainer {
+.billboardListView {
+  /* Sizing */
   font-size: 1.5em;
   width: 100%;
-  height: 150px;
-  background-color: #F4F4F4;
-  display: flex;
+  height: fit-content;
+  padding: 15px;
   border-radius: 30px;
-  color: black;
+
+  /* Colors */
+  background-color: var(--primary-color);
+  color: var(--font-color);
+  
+  /* Flex Parent Properties */
+  display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin: 30px;
-  padding: 15px;
-  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
+
+  /* Behavior */  
   user-select:none;
-  transition: filter 0.75s;
+  cursor: pointer;
 }
 
-.billboardContainer:hover {
-  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
+.billboardListViewContainer:hover {
+  /* filter: drop-shadow(0px 0px 4px var(--glow-active)); */
   transition: filter 0.5s;
 }
 
@@ -30,9 +35,9 @@
   transition: filter 0.5s;
 }
 
-.billboardImage {
+.billboardListView > img {
   width: 220px;
-  height: 100%;
+  height: 122px;
   border-radius: 15px;
 }
 
@@ -53,3 +58,10 @@
   display: flex;
   align-items: center;
 }
+
+/* @media (prefers-color-scheme: dark) {
+  .billboardContainer {
+    background-color: #353b48;
+    color: white;
+  }
+} */
