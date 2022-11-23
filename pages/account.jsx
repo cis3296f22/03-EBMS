@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
-import Header from '../components/Header'
+import Header from '../components/Header/Header'
 import { useSession, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 import Account from '../components/Account'
 
