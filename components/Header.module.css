@@ -9,7 +9,7 @@
 
 .headerWrapper {
   width: 100%;
-  height: 112px;
+  height: 12vh;
 
   display: flex;
   justify-content: center;
@@ -18,8 +18,6 @@
 .logo {
   height: 30px;
 }
-
-
 
 @media only screen and (min-width: 600px) {
   .headerWrapper {
