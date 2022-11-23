@@ -1,36 +1,26 @@
 .billboardListView {
+  /* Sizing */
   font-size: 1.5em;
-  width: 750px;
-  height: 150px;
+  width: 100%;
+  height: fit-content;
+  padding: 15px;
+  border-radius: 30px;
+
+  /* Colors */
   background-color: var(--primary-color);
   color: var(--font-color);
-  padding: 15px;
-  user-select:none;
-  cursor: pointer;
   
+  /* Flex Parent Properties */
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  border-radius: 30px;
 
-  margin-bottom: 20px;
+  /* Behavior */  
+  user-select:none;
+  cursor: pointer;
 }
 
-.billboardFullView {
-  width: 100%;
-  height: 600px;
-  background-color: var(--primary-color);
-  color: var(--font-color);
-  padding: 30px;
-  margin-left: 20px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 30px;
-}
-
-.billboardContainer:hover {
+.billboardListViewContainer:hover {
   /* filter: drop-shadow(0px 0px 4px var(--glow-active)); */
   transition: filter 0.5s;
 }
@@ -45,9 +35,9 @@
   transition: filter 0.5s;
 }
 
-.billboardImage {
+.billboardListView > img {
   width: 220px;
-  height: 100%;
+  height: 122px;
   border-radius: 15px;
 }
 

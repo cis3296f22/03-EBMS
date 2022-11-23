@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-import styles from './Billboard.module.css'
+import styles from './BillboardListView.module.css'
 
-function Billboard({name, imgSrc, size, rate, location}) {
+function BillboardListView({name, imgSrc, size, rate, location}) {
   // const [selected, setSelected] = useState(false);
   // let selectedStyles = selected ? `${styles.billboardContainer} ${styles.selected}` : styles.billboardContainer;
 
@@ -19,4 +19,4 @@ function Billboard({name, imgSrc, size, rate, location}) {
   )
 }
 
-export default Billboard;
+export default BillboardListView;

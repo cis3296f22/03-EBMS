@@ -1,0 +1,11 @@
+.billboardListContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  flex-grow: 1;
+  flex: 1 1 45%;
+}

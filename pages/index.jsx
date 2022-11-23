@@ -2,8 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
-import Header from '../components/Header'
-import ListDetailsContainer from '../components/ListDetailsContainer'
+import Header from '../components/Header/Header'
+import ListDetailsContainer from '../components/Billboard/ListDetailsContainer/ListDetailsContainer'
 
 export default function Home() {
   return (
