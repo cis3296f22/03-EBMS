@@ -7,35 +7,29 @@ import Select from "react-select";
 export default function Create({session}) {
     const supabase = useSupabaseClient()
     const user = useUser()
-    const [loading, setLoading] = useState(true)
-    const [username, setUsername] = useState(null)
-    const [website, setWebsite] = useState(null)
-    const [avatar_url, setAvatarUrl] = useState(null)
+    const [loading, setLoading] = useState(false)
     const [title, setTitle] = useState(null)
     const [image_url, setImageUrl] = useState(null)
-    const [location, setLocation] = useState(null)
     const [rate, setRate] = useState(null)
-    const [city, setCity] = useState(null)
-    const [state, setState] = useState(null)
-
-    useEffect(() => {
-        getProfile()
-      }, [session])
+    const [cityName, setCity] = useState(null)
+    const [stateName, setState] = useState(null)
 
       const states = State.getStatesOfCountry("US")
-      let cities
 
-      async function createBillBoard({title, imgUrl, loc, rate}) {
+      async function createBillBoard({title, imgUrl, rate, state, city}) {
         try {
           setLoading(true)
-    
+
           const updates = {
-            user_id: user.id,
+            user_id: user?.id,
             title: title,
             imageUrl: imgUrl,
-            location: loc,
-            rate: rate
+            rate: rate,
+            state: state,
+            city: city
           }
+
+          console.log(updates)
     
           let { error } = await supabase.from('testing_billboards').insert(updates)
           if (error) throw error
@@ -46,43 +40,6 @@ export default function Create({session}) {
         } finally {
           setLoading(false)
         }
-      }
-    
-      async function getProfile() {
-        try {
-          setLoading(true)
-    
-          let { data, error, status } = await supabase
-            .from('profiles')
-            .select(`username, website, avatar_url`)
-            .eq('id', user.id)
-            .single()
-    
-          if (error && status !== 406) {
-            throw error
-          }
-    
-          if (data) {
-            setUsername(data.username)
-            setWebsite(data.website)
-            setAvatarUrl(data.avatar_url)
-          }
-        } catch (error) {
-          alert('Error loading user data!')
-          console.log(error)
-        } finally {
-          setLoading(false)
-        }
-      }
-
-      function updateCities (state) {
-        cities = City.getCitiesOfState("US", state.isoCode).map((city) => ({
-            label: city.name, 
-            value: city.id, 
-            ...city}))
-        console.log("updatedCities state: " + state.name)
-        console.log("updatedCities state code: " + state.isoCode)
-        console.log("updatedCities: " + cities)
       }
 
       const updatedStates = states.map((state) => ({
@@ -101,11 +58,13 @@ export default function Create({session}) {
         console.log(myCities)
         return myCities
       }
+    
+      let img_url
 
     return(
         <>
         <ImageUpload
-            uid={user.id}
+            uid={user?.id}
             onUpload={(url) => {
                 setImageUrl(url)
               }}
@@ -121,7 +80,7 @@ export default function Create({session}) {
           id="state"
           name="state"
           options={updatedStates}
-          value={state}
+          value={stateName}
           onChange={(value) => {
             setState(value)
           }}
@@ -129,20 +88,29 @@ export default function Create({session}) {
       <Select
           id="city"
           name="city"
-          options={updatedCities(state)}
-          value={city}
-          onChange={(value) => setCity(value)}
+          options={updatedCities(stateName)}
+          value={cityName}
+          onChange={(value) => {
+            setCity(value)
+          }}
         />
       <div>
-        <label>Cost</label>
+        <label>Rate</label>
         <input
-          id="cost"
+          id="rate"
           onChange={(e) => setRate(e.target.value)}
         />
       </div>
       <button
           className="button primary block"
-          onClick={() => createBillBoard({ title, image_url, rate, state, city})}
+          onClick={() => {
+            const s = stateName.name
+            const c = cityName.name
+            createBillBoard({title, imgUrl: image_url, rate, state:s, city:c})
+            console.log(image_url)
+            console.log(s)
+            console.log(c)
+          }}
           disabled={loading}
         >
           {loading ? 'Loading ...' : 'Create Billboard'}
