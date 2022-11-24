@@ -1,5 +1,4 @@
 import React from 'react'
-
 import NavigationButton from '../NavigationButton/NavigationButton'
 import styles from './Header.module.css'
 import Logo from '../Logo/Logo'
