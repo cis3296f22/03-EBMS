@@ -1,5 +1,13 @@
 import React from 'react'
+import styles from './Welcome.module.css'
 
-<div className='welcomeName'>
-    <h2>Welcome Name</h2>
-</div>
+
+const Welcome = () => {
+    return (
+    <div className={styles.welcomeName}>
+        <h2>Welcome Name</h2>
+    </div>
+    )
+}
+
+export default Welcome;
