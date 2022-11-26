@@ -1,0 +1,13 @@
+.formContainer {
+  width: 1000px;
+  height: 800px;
+  background-color: var(--primary-color);
+
+  padding: 20px;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+}

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import Header from '../components/Header/Header'
-import Create from '../components/Create/Create'
+import CreateBillboardFormContainer from '../components/Create/CreateBillboardFormContainer/CreateBillboardFormContainer'
 import { useSession, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 
 export default function MyCreate() {
@@ -14,7 +14,7 @@ export default function MyCreate() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header/>
-      <CreateBillboardContainer session={session}/>
+      <CreateBillboardFormContainer session={session}/>
     </>
   )
 }

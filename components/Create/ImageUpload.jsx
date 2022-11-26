@@ -47,37 +47,16 @@ export default function ImageUpload({ uid, url, onUpload}) {
   
     return (
       <div>
-        {imageUrl ? (
-          <Image
-            src={imageUrl}
-            alt="Image"
-            className="billboard image"
-            width={192}
-            height={108}
-          />
-        ) : (
-          <Image
-            src="/images/default.png"
-            alt="Default Billboard Image"
-            width={192}
-            height={108}
-          />
+        {imageUrl ?
+          ( <Image src={imageUrl} alt="Image" className="billboard image" width={192} height={108}/> ) /* true */
+          :
+          ( <Image src="/images/default.png" alt="Default Billboard Image" width={192} height={108}/> /* false */
         )}
         <div style={{ width: 108 }}>
-          <label className="button primary block" htmlFor="single">
+          <label htmlFor="single">
             {uploading ? 'Uploading ...' : 'Upload Image'}
           </label>
-          <input
-            style={{
-              visibility: 'hidden',
-              position: 'absolute',
-            }}
-            type="file"
-            id="single"
-            accept="image/*"
-            onChange={uploadImage}
-            disabled={uploading}
-          />
+          <input style={{ visibility: 'hidden', position: 'absolute'}} type="file" id="single" accept="image/*" onChange={uploadImage} disabled={uploading}/>
         </div>
       </div>
     )

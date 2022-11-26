@@ -1,17 +1,18 @@
-import ImageUpload from './ImageUpload'
+import ImageUpload from '../ImageUpload'
 import { useState, useEffect } from 'react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { Country, State, City } from "country-state-city"
 import Select from "react-select";
 
-import styles from './Create.module.css'
+import styles from './CreateBillboardForm.module.css'
+import BillboardListView from '../../Billboard/BillboardListView/BillboardListView';
 
-export default function CreateBillboardContainer({session}) {
+export default function CreateBillboardForm({session}) {
     const supabase = useSupabaseClient()
     const user = useUser()
     const [loading, setLoading] = useState(false)
     const [title, setTitle] = useState(null)
-    const [image_url, setImageUrl] = useState(null)
+    const [imageUrl, setImageUrl] = useState(null)
     const [rate, setRate] = useState(null)
     const [cityName, setCity] = useState(null)
     const [stateName, setState] = useState(null)
@@ -60,25 +61,28 @@ export default function CreateBillboardContainer({session}) {
       console.log(myCities)
       return myCities
     }
-  
-    let img_url
 
     return(
-      <div key="container" className={styles.container}>
+      <div key="container" className={styles.formContainer}>
+        <h1> Create Billboard </h1> 
         <ImageUpload uid={user?.id} onUpload={setImageUrl}/>
         <div>
           <label>Title</label>
           <input id="title" onChange={(e) => setTitle(e.target.value)}/>
         </div>
-        <Select id="state" name="state" options={updatedStates} value={stateName} onChange={(value) => { setState(value)}} />
-        <Select id="city" name="city" options={updatedCities(stateName)} value={cityName} onChange={(value) => { setCity(value)}}/>
+        {/* <Select id="state" name="state" options={updatedStates} value={stateName} onChange={(value) => { setState(value)}} /> */}
+        {/* <Select id="city" name="city" options={updatedCities(stateName)} value={cityName} onChange={(value) => { setCity(value)}}/> */}
         <div>
           <label>Rate</label>
           <input id="rate" onChange={(e) => setRate(e.target.value)}/>
         </div>
-        <button className="button primary block" onClick={() => { createBillBoard({title, imgUrl: image_url, rate, state:stateName.name, city:cityName.name}) }} disabled={loading}>
+        <button className="button primary block" onClick={() => { createBillBoard({title, imgUrl: imageUrl, rate, state:stateName.name, city:cityName.name}) }} disabled={loading}>
           {loading ? 'Loading ...' : 'Create Billboard'}
         </button>
+        <div>
+          <h2> Preview </h2>
+          <BillboardListView name={title} rate={rate} imgSrc={imageUrl}></BillboardListView>
+        </div>
       </div>
     )
 }
