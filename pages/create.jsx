@@ -14,7 +14,7 @@ export default function MyCreate() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header/>
-      <Create session={session}/>
+      <CreateBillboardContainer session={session}/>
     </>
   )
 }
