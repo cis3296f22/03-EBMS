@@ -6,8 +6,9 @@ Adding an screenshot or a mockup of your application in action would be nice.
 # How to build and run
 Provide here instructions on how to use your application.   
 - Download the repository
-- Download Node.js v17.3.0
-- Download NPM (node package manager)
+- Download [Node.js v17.3.0](https://nodejs.org/download/release/v17.3.0/)
+- Download NPM (Should come with Node.js use 'npm -v' to check)
+- Optional: Recommended IDE - [VSCode](https://code.visualstudio.com/download)
 
 - Install packages:
 ```
