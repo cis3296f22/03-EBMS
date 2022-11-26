@@ -98,6 +98,7 @@ export default function Account({ session }) {
           {loading ? 'Loading ...' : 'Update'}
         </button>
       </div>
+  
 
       <div>
         <Link href="/">
