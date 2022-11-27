@@ -1,0 +1,45 @@
+.activesContainer {
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+
+
+    margin: 00px 100px 100px 100px;
+    height: 65vh;
+    
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+
+    grid-template-areas:
+        "header"
+        "body"
+}
+
+.activesHeader {
+    grid-area: header;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    border-bottom: 5px solid black;
+
+    grid-template-areas:
+        "left right"
+    
+}
+
+.activesBody {
+    grid-area: body;
+
+}
+
+.activesHeaderLeft {
+    grid-area: left;
+    border-right: 2.5px solid black;
+
+}
+
+.activesHeaderRight {
+    grid-area: right;
+    border-left: 2.5px solid black;
+}

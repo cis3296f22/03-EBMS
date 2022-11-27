@@ -4,10 +4,11 @@
     justify-content: flex-start;
     align-items: stretch;
     gap: 20px;
-    padding: 30px;
+    padding-left: 100px;
+    padding-top: 20px;
 
     height: 15vh;
     width: 100%;
-    border-style: solid;
-    border-color: red;
+    /* border-style: solid;
+    border-color: red; */
 }

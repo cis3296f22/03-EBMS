@@ -2,7 +2,8 @@ import Head from 'next/head'
 import React from 'react'
 import Header from '../components/Header/Header'
 import ListDetailsContainer from '../components/Billboard/ListDetailsContainer/ListDetailsContainer'
-import Welcome from '../components/Account/Welcome'
+import Welcome from '../components/Account/Welcome/Welcome'
+import MyActivesContainer from '../components/Account/MyActivesContainer/MyActivesContainer'
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
 
       <Header/>
       <Welcome/>
+      <MyActivesContainer/>
     </>
   )
 }
