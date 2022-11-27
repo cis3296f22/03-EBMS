@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { Country, State, City } from "country-state-city"
 import Select from "react-select";
+import LocationPicker from './LocationPicker'
 
 export default function Create({session}) {
     const supabase = useSupabaseClient()
@@ -11,22 +12,22 @@ export default function Create({session}) {
     const [title, setTitle] = useState(null)
     const [image_url, setImageUrl] = useState(null)
     const [rate, setRate] = useState(null)
-    const [cityName, setCity] = useState(null)
-    const [stateName, setState] = useState(null)
+    const [lat, setLat] = useState(39.9526)
+    const [lng, setLng] = useState(-75.1652)
 
       const states = State.getStatesOfCountry("US")
 
-      async function createBillBoard({title, imgUrl, rate, state, city}) {
+      async function createBillBoard() {
         try {
           setLoading(true)
 
           const updates = {
             user_id: user?.id,
             title: title,
-            imageUrl: imgUrl,
+            imageUrl: image_url,
             rate: rate,
-            state: state,
-            city: city
+            latitude: lat,
+            longitude: lng
           }
 
           console.log(updates)
@@ -42,24 +43,15 @@ export default function Create({session}) {
         }
       }
 
-      const updatedStates = states.map((state) => ({
-        label: state.name,
-        value: state.id,
-        ...state
-      }));
-
-      const updatedCities = (stateId) => 
+      const setLatRef = (val) =>
       {
-        console.log(stateId?.name)
-        const myCities = City.getCitiesOfState("US", stateId?.isoCode).map((city) => ({
-            label: city.name, 
-            value: city.id, 
-            ...city}))
-        console.log(myCities)
-        return myCities
+        setLat(val)
       }
-    
-      let img_url
+
+      const setLngRef = (val) =>
+      {
+        setLng(val)
+      }
 
     return(
         <>
@@ -76,24 +68,28 @@ export default function Create({session}) {
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
-      <Select
-          id="state"
-          name="state"
-          options={updatedStates}
-          value={stateName}
-          onChange={(value) => {
-            setState(value)
-          }}
-        />
-      <Select
-          id="city"
-          name="city"
-          options={updatedCities(stateName)}
-          value={cityName}
-          onChange={(value) => {
-            setCity(value)
-          }}
-        />
+      <div>
+        <label>Latitude</label>
+        <input
+        id="lat"
+        value={lat}
+        onChange={(e) => setLatRef(e.target.value)} />
+      </div>
+      <div>
+        <label>Longitude</label>
+        <input
+        id="lng"
+        value={lng}
+        onChange={(e) => setLngRef(e.target.value)} />
+      </div>
+      <LocationPicker
+        updateLat={(val) => {
+          setLat(val)
+        }}
+        updateLng={(val) => {
+          setLng(val)
+        }}
+      />
       <div>
         <label>Rate</label>
         <input
@@ -104,12 +100,8 @@ export default function Create({session}) {
       <button
           className="button primary block"
           onClick={() => {
-            const s = stateName.name
-            const c = cityName.name
-            createBillBoard({title, imgUrl: image_url, rate, state:s, city:c})
-            console.log(image_url)
-            console.log(s)
-            console.log(c)
+            console.log(lat, lng)
+            createBillBoard({title, imgUrl: image_url, rate, latitude:lat, longitude:lng})
           }}
           disabled={loading}
         >
