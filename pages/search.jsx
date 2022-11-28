@@ -1,9 +1,11 @@
-
+import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
+import Header from '../components/Header/Header'
 import styles from '../components/Search.module.css'
+import { useSession, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 // import { createUserWithEmailAndPassword, getAuth } from '../config/firebase'
 
-function Search () {
+const Search = ()=> {
   const [, setFetchError] = useState(null)
   const [data, setLocation] = useState(null)
 
@@ -16,21 +18,6 @@ function Search () {
 
     }  
   })
-  // let signUp = ({name, email, password}) => {
-  //   return createUserWithEmailAndPassword(getAuth(), form.email, form.password)
-  //     .then((userCredentials) => {
-  //       console.log(userCredentials)
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     })
-  // }
-
-  // const onSubmitHandler = (data) => {
-    // return signUp(data).then((user) => {
-    //   console.log(user)
-    // })
-  // }
 
   return (
     <div>
