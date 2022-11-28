@@ -17,6 +17,8 @@
 
 .activesHeader {
     grid-area: header;
+    justify-content: center;
+    align-items: center;
     
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -35,11 +37,14 @@
 
 .activesHeaderLeft {
     grid-area: left;
-    border-right: 2.5px solid black;
+    text-align: center;
+  
+    /* border-right: 2.5px solid black; */
 
 }
 
 .activesHeaderRight {
     grid-area: right;
-    border-left: 2.5px solid black;
+    text-align: center;
+    /* border-left: 2.5px solid black; */
 }
