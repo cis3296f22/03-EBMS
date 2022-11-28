@@ -1,15 +1,18 @@
-import '../styles/globals.css'
-import { SessionProvider } from "next-auth/react"
 import React, {createContext, useState, useEffect} from 'react'
-// import useFirebaseAuth from'../config/useFirebaseAuth'
-// import { AuthUserProvider } from '../context/AuthUserContext'
+import '../styles/globals.css'
+import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import { SessionContextProvider } from '@supabase/auth-helpers-react'
 
-function MyApp({Component, pageProps, session}) {
+function MyApp({ Component, pageProps }) {
+  const [supabase] = useState(() => createBrowserSupabaseClient())
+
   return (
-    <SessionProvider session={session}>
+    <SessionContextProvider
+      supabaseClient={supabase}
+      initialSession={pageProps.initialSession}
+    >
       <Component {...pageProps} />
-    </SessionProvider>
+    </SessionContextProvider>
   )
 }
-
 export default MyApp

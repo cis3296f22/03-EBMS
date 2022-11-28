@@ -6,6 +6,7 @@ const Account = ({ session }) => {
   const [username, setUsername] = useState(null)
   const [website, setWebsite] = useState(null)
   const [avatar_url, setAvatarUrl] = useState(null)
+  const [session, setSession] = useState()
 
   useEffect(() => {
     getProfile()
@@ -15,6 +16,8 @@ const Account = ({ session }) => {
     try {
       setLoading(true)
       const { user } = session
+
+      console.log(user)
 
       let { data, error, status } = await supabase
         .from('profiles')
