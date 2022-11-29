@@ -15,6 +15,7 @@ export default function Create({session}) {
     const [rate, setRate] = useState(null)
     const [lat, setLat] = useState(39.9526)
     const [lng, setLng] = useState(-75.1652)
+    const [location, setLocation] = useState("City, State")
 
     async function createBillBoard() {
         try {
@@ -32,6 +33,7 @@ export default function Create({session}) {
             updateInterval: 10,
             locationX: lat,
             locationY: lng,
+            location: location,
           }
 
           console.log(updates)
@@ -73,6 +75,13 @@ export default function Create({session}) {
           id="title"
           onChange={(e) => setTitle(e.target.value)}
         />
+      </div>
+      <div>
+        <label>Location</label>
+        <input
+        id="location"
+        value={location}
+        onChange={(e) => setLocation(e.target.value)} />
       </div>
       <div>
         <label>Latitude</label>
