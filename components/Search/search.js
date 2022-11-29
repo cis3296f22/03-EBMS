@@ -3,16 +3,14 @@ import { useState, useEffect } from 'react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { Country, State, City } from "country-state-city"
 import Select from "react-select";
+import BillboardList from '../Billboard/BillboardList/BillboardList';
 
 export default function Search({session}) {
     const supabase = useSupabaseClient()
     const user = useUser()
     const [loading, setLoading] = useState(false)
     const [name, setName] = useState(null)
-    //const [image_url, setImageUrl] = useState(null)
-    //const [rate, setRate] = useState(null)
-    //const [lat, setLat] = useState(39.9526)
-    //const [lng, setLng] = useState(-75.1652)
+    const [listArray, setListArray] = useState([])
 
     async function getBillBoard() {
         try {
@@ -20,8 +18,9 @@ export default function Search({session}) {
 
           console.log(name)
           const myName = '%'+ name +'%'
-          const { data, error } = await supabase.from('testing_billboards').select().ilike('title', myName)
-          console.log(data)
+          const { data, error } = await supabase.from('billboard_listings').select().ilike('title', myName)
+          setListArray(data)
+          
           if (error) throw error
           alert('Testing Billboards Inserted')
         } catch (error) {
@@ -49,6 +48,7 @@ export default function Search({session}) {
         >
           {loading ? 'Loading ...' : 'Create Billboard'}
         </button>
+      <BillboardList listingsArray={listArray}> </BillboardList>
       </>
     )
 }
