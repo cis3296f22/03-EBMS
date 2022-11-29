@@ -14,7 +14,8 @@ export default function Buy() {
   const {session_id} = router.query
 
   useEffect(() => {
-    let { error } = supabase.from('ad_bookings').update({sessionId: session_id}).eq('paymentVerified', true)
+    console.log(session_id)
+    let { error } = supabase.from('ad_bookings').select().update({sessionId: session_id}).eq('paymentVerified', true)
     if (error) throw error
   }, [])
 
