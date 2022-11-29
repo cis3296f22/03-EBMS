@@ -4,6 +4,7 @@ import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { Country, State, City } from "country-state-city"
 import Select from "react-select";
 import LocationPicker from './LocationPicker'
+import Link from 'next/link'
 
 export default function Create({session}) {
     const supabase = useSupabaseClient()
@@ -102,7 +103,8 @@ export default function Create({session}) {
           onChange={(e) => setRate(e.target.value)}
         />
       </div>
-      <button
+      <Link href="/">
+        <button
           className="button primary block"
           onClick={() => {
             createBillBoard()
@@ -111,6 +113,7 @@ export default function Create({session}) {
         >
           {loading ? 'Loading ...' : 'Create Billboard'}
         </button>
+      </Link>
       </>
   )
 }
