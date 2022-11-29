@@ -10,8 +10,8 @@ async function handleLogin() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      //redirectTo: '/' //PUBLISHING
-      redirectTo: 'http://localhost:3000' //FOR TESTING
+      redirectTo: '/' //PUBLISHING
+      //redirectTo: 'http://localhost:3000' //FOR TESTING
     }
   })
 }
