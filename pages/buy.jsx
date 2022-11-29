@@ -5,6 +5,7 @@ import Header from '../components/Header/Header'
 import { useSession } from '@supabase/auth-helpers-react'
 import supabase, {handleLogin} from '../utils/supabaseClient';
 import BillboardCard from '../components/Billboard/BillboardListView/BillboardCard'
+import BuyForm from '../components/BuyForm/BuyForm'
 
 export default function Buy() {
   const session = useSession()
@@ -38,7 +39,7 @@ export default function Buy() {
           <div style={{width: "1000px", display:"flex", flexDirection:"column"}}>
             <BillboardCard {...billboard} setCurrentSelection={()=>{}}/>
             
-            <BuyForm/>
+            <BuyForm session={session} billboardId={id}/>
           </div>
         </div>
       </>
