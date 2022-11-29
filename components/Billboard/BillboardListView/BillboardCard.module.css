@@ -59,6 +59,14 @@
   align-items: center;
 }
 
+.descriptionContainer {
+  user-select: none;
+}
+
+.billboardImage {
+  user-select: none;
+}
+
 /* @media (prefers-color-scheme: dark) {
   .billboardContainer {
     background-color: #353b48;

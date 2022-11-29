@@ -2,11 +2,17 @@ import React from 'react'
 
 import styles from './BillboardDetails.module.css'
 
-const BillboardDetails = () => {
+const BillboardDetails = ({billboard}) => {
+  console.log(billboard)
+
   return (
     <div className={styles.billboardFullViewContainer}>
       <div className={styles.billboardFullView}>
-        Test
+        {!billboard ? "" : (
+          <div>
+            {billboard.name}, {billboard.location}, {billboard.rate}
+          </div>
+        )}
       </div>
     </div>
   )
