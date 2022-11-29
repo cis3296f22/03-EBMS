@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import Header from '../components/Header/Header'
-import CreateBillboardFormContainer from '../components/Create/CreateBillboardFormContainer/CreateBillboardFormContainer'
+import Create from '../components/Create/CreateBillboardFormContainer/CreateBillboardFormContainer'
 import { useSession, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 import {supabase} from '../utils/supabaseClient';
 
