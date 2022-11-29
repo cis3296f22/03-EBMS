@@ -37,16 +37,14 @@ export default function FourOhFour() {
                     setOnFire(!onFire)
                 }}>
                     <Image
-                    src={onFire ? "/images/image2.png" : "/images/image.png"}
+                    src={onFire ? "/images/image2.png" : (Math.random() * 15 < 1 ? "/images/image3.png" : "/images/image.png")}
                     alt="404 image"
                     width={1000}
                     height={700}
                     />
                 </div>
-                <div>404</div>
-                <div>ERROR</div>
+                <div>404 ERROR</div>
             </div>
-        
         </div>
     )
 }

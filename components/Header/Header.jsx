@@ -14,10 +14,6 @@ function Header() {
       text: "Search",
       link: "/search"
     },
-    {
-      text: "Manage",
-      link: "/manage"
-    }
   ]
 
   return (
