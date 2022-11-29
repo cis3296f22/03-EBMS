@@ -6,7 +6,12 @@ import Account from '../components/Account/Account'
 import Welcome from '../components/Account/Welcome/Welcome'
 import MyActivesContainer from '../components/Account/MyActivesContainer/MyActivesContainer'
 
+
+
+
 export default function MyAccount() {
+
+  
 
   const session = useSession()
   if(session != undefined)
