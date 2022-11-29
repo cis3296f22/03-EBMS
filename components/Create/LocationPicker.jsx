@@ -10,13 +10,12 @@ const containerStyle = {
 const center = {
     lat: 39.9526,
     lng: -75.1652
-  }
+}
   
 const position = {
     lat: 39.9526,
     lng: -75.1652
 }
-
 
 function MyComponent({updateLat, updateLng}) {
 
@@ -29,7 +28,8 @@ function MyComponent({updateLat, updateLng}) {
         console.log('longitude: ', marker.latLng.lng())
         updateLat(marker.latLng.lat())
         updateLng(marker.latLng.lng())
-    }
+  }
+
 
   return (
     <div>

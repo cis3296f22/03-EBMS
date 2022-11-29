@@ -9,7 +9,7 @@ export default function Home() {
       <Head>
         <title>Billboard</title>
         <meta name="description" content="Doing billboard stuff" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/adorado.ico" />
       </Head>
 
       <Header/>
