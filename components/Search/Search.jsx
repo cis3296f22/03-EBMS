@@ -5,7 +5,6 @@ import BillboardList from '../Billboard/BillboardList/BillboardList';
 
 export default function Search() {
     const supabase = useSupabaseClient()
-    const user = useUser()
     const [loading, setLoading] = useState(false)
     const [name, setName] = useState(null) //Search term to be entered
     const [listArray, setListArray] = useState([]) //Returned array 
