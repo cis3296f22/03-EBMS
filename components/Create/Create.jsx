@@ -1,4 +1,4 @@
-import ImageUpload from './ImageUpload'
+import ImageUpload from '../ImageUpload'
 import { useState, useEffect } from 'react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { Country, State, City } from "country-state-city"

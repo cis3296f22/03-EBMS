@@ -36,6 +36,7 @@
 }
 
 .billboardCard > img {
+  object-fit: cover;
   width: 220px;
   height: 122px;
   border-radius: 15px;
@@ -57,6 +58,14 @@
   background-color: green;
   display: flex;
   align-items: center;
+}
+
+.descriptionContainer {
+  user-select: none;
+}
+
+.billboardImage {
+  user-select: none;
 }
 
 /* @media (prefers-color-scheme: dark) {
