@@ -39,7 +39,7 @@ export default function Buy() {
           <div style={{width: "1000px", display:"flex", flexDirection:"column"}}>
             <BillboardCard {...billboard} setCurrentSelection={()=>{}}/>
             
-            <BuyForm session={session} billboardId={id}/>
+            <BuyForm session={session} billboard={billboard}/>
           </div>
         </div>
       </>
