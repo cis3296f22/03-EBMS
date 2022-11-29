@@ -36,6 +36,7 @@
 }
 
 .billboardCard > img {
+  object-fit: cover;
   width: 220px;
   height: 122px;
   border-radius: 15px;
