@@ -1,6 +1,6 @@
 import {React, useState, useEffect} from 'react';
 import styles from '../NavigationButton/NavigationButton.module.css'
-import {supabase} from '../../utils/supabaseClient';
+import supabase from '../../utils/supabaseClient';
 import Link from 'next/link'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
