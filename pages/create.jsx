@@ -27,7 +27,7 @@ export default function MyCreate() {
           <link rel="icon" href="/adorado.ico" />
         </Head>
         <Header/>
-        <CreateBillboardFormContainer session={session}/>
+        <Create session={session}/>
       </>
     )
   else
