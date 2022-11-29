@@ -4,14 +4,14 @@ import {supabase} from '../../utils/supabaseClient';
 import Link from 'next/link'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
-import Account from '../Account'
+import Account from '../Account/Account'
 
 async function handleLogin() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: '/' //PUBLISHING
-      //redirectTo: 'http://localhost:3000' //FOR TESTING
+      //redirectTo: '/' //PUBLISHING
+      redirectTo: 'http://localhost:3000' //FOR TESTING
     }
   })
 }

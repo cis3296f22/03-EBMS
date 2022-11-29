@@ -15,10 +15,10 @@ export default function Create({session}) {
     const [lat, setLat] = useState(39.9526)
     const [lng, setLng] = useState(-75.1652)
 
-      const states = State.getStatesOfCountry("US")
-
-      async function createBillBoard() {
+    async function createBillBoard() {
         try {
+          const myName = '%'+ name +'%'
+
           setLoading(true)
 
           const updates = {
@@ -35,25 +35,27 @@ export default function Create({session}) {
           let { error } = await supabase.from('testing_billboards').insert(updates)
           if (error) throw error
           alert('Testing Billboards Inserted')
-        } catch (error) {
+        } 
+        catch (error) {
           alert('Error updating the data!')
           console.log(error)
-        } finally {
+        } 
+        finally {
           setLoading(false)
         }
-      }
+  }
 
-      const setLatRef = (val) =>
-      {
-        setLat(val)
-      }
+  const setLatRef = (val) =>
+  {
+    setLat(val)
+  }
 
-      const setLngRef = (val) =>
-      {
-        setLng(val)
-      }
+  const setLngRef = (val) =>
+  {
+    setLng(val)
+  }
 
-    return(
+  return(
         <>
         <ImageUpload
             uid={user?.id}
@@ -100,13 +102,12 @@ export default function Create({session}) {
       <button
           className="button primary block"
           onClick={() => {
-            console.log(lat, lng)
-            createBillBoard({title, imgUrl: image_url, rate, latitude:lat, longitude:lng})
+            createBillBoard()
           }}
           disabled={loading}
         >
           {loading ? 'Loading ...' : 'Create Billboard'}
         </button>
       </>
-    )
+  )
 }
