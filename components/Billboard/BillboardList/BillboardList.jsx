@@ -1,5 +1,5 @@
 import React from 'react'
-import BillboardCard from '../BillboardListView/BillboardCard'
+import BillboardCard from '../BillboardCard/BillboardCard'
 import styles from './BillboardList.module.css'
 
 const BillboardList = ({ listingsArray }) => {

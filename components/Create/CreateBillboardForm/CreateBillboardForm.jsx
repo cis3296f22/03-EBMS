@@ -5,7 +5,7 @@ import { Country, State, City } from "country-state-city"
 import Select from "react-select";
 
 import styles from './CreateBillboardForm.module.css'
-import BillboardListView from '../../Billboard/BillboardListView/BillboardListView';
+import BillboardListView from '../../Billboard/BillboardCard/BillboardCard';
 
 export default function CreateBillboardForm({session}) {
     const supabase = useSupabaseClient()
