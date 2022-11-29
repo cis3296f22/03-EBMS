@@ -5,13 +5,13 @@ import { Country, State, City } from "country-state-city"
 import Select from "react-select";
 
 import styles from './CreateBillboardForm.module.css'
-import BillboardListView from '../../Billboard/BillboardCard/BillboardCard';
+import BillboardCard from '../../Billboard/BillboardCard/BillboardCard';
 
 export default function CreateBillboardForm({session}) {
     const supabase = useSupabaseClient()
     const user = useUser()
     const [loading, setLoading] = useState(false)
-    const [title, setTitle] = useState(null)
+    const [name, setName] = useState(null)
     const [imageUrl, setImageUrl] = useState(null)
     const [rate, setRate] = useState(null)
     const [cityName, setCity] = useState(null)
@@ -19,13 +19,13 @@ export default function CreateBillboardForm({session}) {
 
     const states = State.getStatesOfCountry("US")
 
-    async function createBillBoard({title, imgUrl, rate, state, city}) {
+    async function createBillBoard({name, imgUrl, rate, state, city}) {
       try {
         setLoading(true)
 
         const updates = {
           user_id: user?.id,
-          title: title,
+          name: name,
           imageUrl: imgUrl,
           rate: rate,
           state: state,
@@ -67,8 +67,8 @@ export default function CreateBillboardForm({session}) {
         <h1> Create Billboard </h1> 
         <ImageUpload uid={user?.id} onUpload={setImageUrl}/>
         <div>
-          <label>Title</label>
-          <input id="title" onChange={(e) => setTitle(e.target.value)}/>
+          <label>Name</label>
+          <input id="title" onChange={(e) => setName(e.target.value)}/>
         </div>
         {/* <Select id="state" name="state" options={updatedStates} value={stateName} onChange={(value) => { setState(value)}} /> */}
         {/* <Select id="city" name="city" options={updatedCities(stateName)} value={cityName} onChange={(value) => { setCity(value)}}/> */}
@@ -76,12 +76,12 @@ export default function CreateBillboardForm({session}) {
           <label>Rate</label>
           <input id="rate" onChange={(e) => setRate(e.target.value)}/>
         </div>
-        <button className="button primary block" onClick={() => { createBillBoard({title, imgUrl: imageUrl, rate, state:stateName.name, city:cityName.name}) }} disabled={loading}>
+        <button className="button primary block" onClick={() => { createBillBoard({name, imgUrl: imageUrl, rate, state:stateName.name, city:cityName.name}) }} disabled={loading}>
           {loading ? 'Loading ...' : 'Create Billboard'}
         </button>
         <div>
           <h2> Preview </h2>
-          <BillboardListView name={title} rate={rate} imgSrc={imageUrl}></BillboardListView>
+          <BillboardCard name={name} rate={rate} imgSrc={imageUrl}/>
         </div>
       </div>
     )
