@@ -4,16 +4,20 @@ import styles from './Logo.module.css'
 
 import Image from 'next/image'
 
+import Link from 'next/link'
+
 function Logo() {
   return (
+    <Link href="/">
     <div className={styles.logoContainer}>
       <Image
-        src="/logo.png"
+        src="/sexyGoldStd.png"
         alt="Billboard logo"
         width={195}
-        height={35}
+        height={30}
       />
     </div>
+    </Link>
   )
 }
 
