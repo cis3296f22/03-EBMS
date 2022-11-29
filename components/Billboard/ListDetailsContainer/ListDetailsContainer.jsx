@@ -20,7 +20,6 @@ const ListDetailsContainer = () => {
 
   async function getBillBoardListings() {
     const { data, error } = await supabase.from('billboard_listings').select('*')
-    console.log(await supabase.from('billboard_listings').select().eq('id', 9).single())
     if (error) return []
     return data
   }

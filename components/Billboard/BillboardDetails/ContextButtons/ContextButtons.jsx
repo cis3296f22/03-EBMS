@@ -15,7 +15,7 @@ export default function ContextButtons ({billboardId}) {
 
   return (<div className={styles.contextButtonContainer}>
     {/* <ContextButton text={mapOpen ? "Close Map" : "View Map"} onClick={() => setMapOpen((map) => !map)}/> */}
-    <Link href="/">
+    <Link href={`/buy?id=${billboardId}`}>
       <ContextButton text="Buy Space" callToAction={"buy"}/>
     </Link>
     <ContextButton text="Copy URL" onClick={copyToClipboard}/>
