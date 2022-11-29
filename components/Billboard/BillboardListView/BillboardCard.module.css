@@ -1,4 +1,4 @@
-.billboardListView {
+.billboardCard {
   /* Sizing */
   font-size: 1.5em;
   width: 100%;
@@ -20,7 +20,7 @@
   cursor: pointer;
 }
 
-.billboardListViewContainer:hover {
+.billboardCardContainer:hover {
   /* filter: drop-shadow(0px 0px 4px var(--glow-active)); */
   transition: filter 0.5s;
 }
@@ -35,7 +35,7 @@
   transition: filter 0.5s;
 }
 
-.billboardListView > img {
+.billboardCard > img {
   width: 220px;
   height: 122px;
   border-radius: 15px;

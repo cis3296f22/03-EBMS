@@ -3,18 +3,33 @@ import React from 'react'
 import Header from '../components/Header/Header'
 import CreateBillboardFormContainer from '../components/Create/CreateBillboardFormContainer/CreateBillboardFormContainer'
 import { useSession, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
+import {supabase} from '../utils/supabaseClient';
 
 export default function MyCreate() {
   const session = useSession()
-  return (
-    <>
-      <Head>
-        <title>Billboard</title>
-        <meta name="description" content="Doing billboard stuff" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header/>
-      <CreateBillboardFormContainer session={session}/>
-    </>
-  )
+
+  async function handleLogin() {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: '/' //PUBLISHING
+        //redirectTo: 'http://localhost:3000' //FOR TESTING
+      }
+    })
+  }
+
+  if(session)
+    return (
+      <>
+        <Head>
+          <title>Billboard</title>
+          <meta name="description" content="Doing billboard stuff" />
+          <link rel="icon" href="/adorado.ico" />
+        </Head>
+        <Header/>
+        <CreateBillboardFormContainer session={session}/>
+      </>
+    )
+  else
+    handleLogin()
 }

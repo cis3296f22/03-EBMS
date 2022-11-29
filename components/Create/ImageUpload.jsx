@@ -17,26 +17,34 @@ export default function ImageUpload({ uid, url, onUpload}) {
         if (!event.target.files || event.target.files.length === 0) {
           throw new Error('You must select an image to upload.')
         }
+
+        const url = URL.createObjectURL(event.target.files[0])
   
         const file = event.target.files[0]
         const fileExt = file.name.split('.').pop()
-        const fileName = `${uid}.${fileExt}`
+        const urlName = url.split('/').pop()
+        const fileName = `${urlName}.${fileExt}`
         const filePath = `${fileName}`
 
-        const url = URL.createObjectURL(event.target.files[0])
-
         setImageUrl(url)
+
+        console.log(url)
+        console.log(filePath, file)
   
-        let { error: uploadError } = await supabase.storage
+        let { data, error: uploadError } = await supabase.storage
           .from('billboard-images')
           .upload(filePath, file, { upsert: true })
-  
+        
+        console.log(data.path)
+
         if (uploadError) {
           console.log("UPLOAD ERROR")
           throw uploadError
         }
+
+        const string = "https://uomcmbqkndtmleifmays.supabase.co/storage/v1/object/public/billboard-images/" + data.path
   
-        onUpload(filePath)
+        onUpload(string)
       } catch (error) {
         alert('Error uploading image!')
         console.log(error)
