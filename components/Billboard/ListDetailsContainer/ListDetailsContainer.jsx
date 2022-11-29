@@ -14,6 +14,7 @@ const ListDetailsContainer = () => {
   useEffect(() => {
     getBillBoardListings().then((billboardListings) => {
       setListingsArray(billboardListings)
+      setCurrentSelection(billboardListings[0])
     })
   }, [])
 

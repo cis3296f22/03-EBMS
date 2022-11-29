@@ -24,8 +24,9 @@
 .billboardDetailsImg {
   width: 100%;
   aspect-ratio: 1;
-  max-height: 400px;
+  max-height: 500px;
   border-radius: 30px;
+  object-fit: cover;
 }
 
 .billboardDetailsText {
