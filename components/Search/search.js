@@ -9,10 +9,6 @@ export default function Search({session}) {
     const user = useUser()
     const [loading, setLoading] = useState(false)
     const [name, setName] = useState(null)
-    //const [image_url, setImageUrl] = useState(null)
-    //const [rate, setRate] = useState(null)
-    //const [lat, setLat] = useState(39.9526)
-    //const [lng, setLng] = useState(-75.1652)
 
     async function getBillBoard() {
         try {
@@ -20,7 +16,7 @@ export default function Search({session}) {
 
           console.log(name)
           const myName = '%'+ name +'%'
-          const { data, error } = await supabase.from('testing_billboards').select().ilike('title', myName)
+          const { data, error } = await supabase.from('billboard_listings').select().ilike('title', myName)
           console.log(data)
           if (error) throw error
           alert('Testing Billboards Inserted')
