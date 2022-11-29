@@ -11,7 +11,7 @@ export default function MyCreate() {
       <Head>
         <title>Billboard</title>
         <meta name="description" content="Doing billboard stuff" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/adorado.ico" />
       </Head>
       <Header/>
       <Create session={session}/>
