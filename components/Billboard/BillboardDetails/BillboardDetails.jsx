@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 
 import styles from './BillboardDetails.module.css'
 import ContextButtons from './ContextButtons/ContextButtons'
 
+import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
+
 const BillboardDetails = ({billboard}) => {
-  console.log(billboard)
+  // const [mapOpen, setMapOpen] = useState(false)
 
   return (
     <div className={styles.billboardFullViewContainer}>
@@ -19,9 +21,16 @@ const BillboardDetails = ({billboard}) => {
             </div>
 
             <h3 className={styles.billboardOther}>{`$${billboard.rate} per ${billboard.updateInterval} seconds`} | {billboard.size} </h3>
-          </div>
           
-          <ContextButtons billboardId={billboard.id}/>
+            <ContextButtons billboardId={billboard.id}/>
+          </div>
+          <div className={styles.billboardMap}>
+            <LoadScript googleMapsApiKey="AIzaSyAw0-lPg9MzsRSAxXf9orluQr2tbtgCbA8">
+              <GoogleMap mapContainerStyle={{width: "100%", height: "400px"}} zoom={10} center={{lat: billboard.locationX, lng: billboard.locationY}}>
+                  <MarkerF position={{lat: billboard.locationX, lng: billboard.locationY}} clickable={false} draggable={false}/>
+              </GoogleMap>
+            </LoadScript>
+          </div>
         </>}
       </div>
     </div>

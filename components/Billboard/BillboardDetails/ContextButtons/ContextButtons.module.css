@@ -1,7 +1,7 @@
 .contextButtonContainer {
   position: absolute;
-  bottom: 15px;
-  right: 15px;
+  bottom: 0px;
+  right: 0px;
 
   display: flex;
   flex-direction: row;
@@ -10,18 +10,26 @@
 
 .contextButton {
   width: fit-content;
-  padding: 10px;
+  padding: 7px;
   border-radius: 20px;
-  color: grey;
-  outline: grey 1px solid;
+  color: rgb(221, 221, 221);
+  background-color: rgb(73, 73, 73);
+  /* outline: rgb(26, 26, 26) 1px solid; */
 }
 
 .contextButton:hover {
-  background-color: white;
-  transition: background-color 0.5s;
+  /* background-color: rgb(51, 51, 51);
+  transition: background-color 0.5s; */
   cursor: pointer;
 }
 
 .contextButtonText {
   user-select: none;
+}
+
+.buy {
+  color: rgb(0, 0, 0);
+  background-color: #f1c40f;
+  transition: filter 1s;
+  transition: background-color 1s;
 }
