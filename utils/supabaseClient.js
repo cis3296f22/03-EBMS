@@ -11,8 +11,8 @@ export const handleLogin = async function(path) {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      // redirectTo: `http://localhost:3000` + path //PUBLISHING
-      redirectTo: 'http://localhost:3000' + path //FOR TESTING
+      redirectTo: path //PUBLISHING
+      // redirectTo: 'http://localhost:3000' + path //FOR TESTING
     }
   })
 }
