@@ -22,17 +22,20 @@ export default function Create({session}) {
           setLoading(true)
 
           const updates = {
-            user_id: user?.id,
-            title: title,
-            imageUrl: image_url,
+            name: title,
             rate: rate,
-            latitude: lat,
-            longitude: lng
+            size: "800x400",
+            location: "City, State",
+            imgUrl: image_url,
+            ownerId: user?.id,
+            updateInterval: 10,
+            locationX: lat,
+            locationY: lng,
           }
 
           console.log(updates)
     
-          let { error } = await supabase.from('testing_billboards').insert(updates)
+          let { error } = await supabase.from('billboard_listings').insert(updates)
           if (error) throw error
           alert('Testing Billboards Inserted')
         } 
