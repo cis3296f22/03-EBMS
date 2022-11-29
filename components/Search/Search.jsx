@@ -1,8 +1,6 @@
 
 import { useState, useEffect } from 'react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
-import { Country, State, City } from "country-state-city"
-import Select from "react-select";
 import BillboardList from '../Billboard/BillboardList/BillboardList';
 
 export default function Search({session}) {
