@@ -11,7 +11,7 @@ export default function Buy() {
 
   useEffect(() => {
     // console.log(session_id)
-    let { error } = supabase.from('ad_bookings').select().update({paymentVerified: true}).eq('sessionId', session_id)
+    let { error } = supabase.from('ad_bookings').select().update({'paymentVerified': true}).eq('sessionId', session_id)
     if (error) throw error
   }, [])
 
