@@ -1,0 +1,27 @@
+.contextButtonContainer {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.contextButton {
+  width: fit-content;
+  padding: 10px;
+  border-radius: 20px;
+  color: grey;
+  outline: grey 1px solid;
+}
+
+.contextButton:hover {
+  background-color: white;
+  transition: background-color 0.5s;
+  cursor: pointer;
+}
+
+.contextButtonText {
+  user-select: none;
+}
