@@ -7,25 +7,12 @@ import styles from '../components/Search.module.css'
 import { useSession, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 // import { createUserWithEmailAndPassword, getAuth } from '../config/firebase'
 
-const mySearch = () => {
-  const session = useSession(null)
-  const [, setFetchError] = useState(null)
-  const [data, setLocation] = useState(null)
-
-  useEffect(() => {
-    const fetchLocation = async () => {
-      const {data, error} = await supabase
-        .from('ad_bookings')
-        .select('name')
-        .contains('name', ['value']) // 'value' will be whatever is entered in the search bar
-
-    }  
-  })
-
+export default function MySearch(){
+  const session = useSession()
   return (
     <>
       <Head>
-        <title>Billboard</title>
+        <title>Search for a BillBoard</title>
         <meta name="description" content="Doing billboard stuff" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -34,4 +21,3 @@ const mySearch = () => {
     </>
   )
 }
-export default mySearch;
