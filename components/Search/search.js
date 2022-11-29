@@ -20,9 +20,7 @@ export default function Search({session}) {
           const myName = '%'+ name +'%'
           const { data, error } = await supabase.from('billboard_listings').select().ilike('name', myName)
           setListArray(data)
-          
           if (error) throw error
-          alert('Testing Billboards Inserted')
         } catch (error) {
           alert('Error updating the data!')
           console.log(error)
