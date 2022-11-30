@@ -2,8 +2,8 @@ import React from 'react'
 import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: '800px',
-  height: '400px'
+  width: '700px',
+  height: '350px'
 };
 
 const center = {
@@ -23,8 +23,8 @@ function MyComponent({updateLat, updateLng}) {
       }
 
     const getMarkerLocation = marker => {
-        console.log('latitude: ', marker.latLng.lat())
-        console.log('longitude: ', marker.latLng.lng())
+        //console.log('latitude: ', marker.latLng.lat())
+        //console.log('longitude: ', marker.latLng.lng())
         updateLat(marker.latLng.lat())
         updateLng(marker.latLng.lng())
   }

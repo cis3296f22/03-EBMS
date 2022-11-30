@@ -1,0 +1,23 @@
+.welcomeContainer{
+    font-size:25px;
+    font-weight:600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.welcome{
+    padding:20px;
+}
+
+.signOut{
+    padding:5px;
+}
+
+.billboards{
+    font-size:27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

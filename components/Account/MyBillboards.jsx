@@ -2,21 +2,23 @@
 import { useState, useEffect } from 'react'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import BillboardList from '../Billboard/BillboardList/BillboardList';
-import styles from './Search.module.css'
+import styles from './MyBillboards.module.css'
 
-export default function Search() {
+export default function Search({userId}) {
     const supabase = useSupabaseClient()
     const [loading, setLoading] = useState(false)
-    const [name, setName] = useState(null) //Search term to be entered
     const [listArray, setListArray] = useState([]) //Returned array 
+
+    useEffect( () => {
+        getBillBoard()
+    }, [] )
 
     async function getBillBoard() {
       try {
         setLoading(true)
-
-        console.log(name)
-        const myName = '%'+ name +'%'
-        const { data, error } = await supabase.from('billboard_listings').select().or('name.ilike.' + myName + ', location.ilike.' + myName)
+        console.log(userId)
+        const { data, error } = await supabase.from('billboard_listings').select().eq('ownerId', userId)
+        console.log(data)
         setListArray(data)
         if (error) throw error
       } catch (error) {
@@ -29,15 +31,6 @@ export default function Search() {
     
     return(
       <div className={styles.container}>
-        <div className={styles.searchContainer}>
-          <div className={styles.component}>
-            <input className={styles.searchInput} size={70} id="title" onChange={(e) => {
-              setName(e.target.value)}}/>
-          </div>
-          <button className={styles.searchButton} onClick={() => { getBillBoard({}) }} disabled={loading}>
-            {loading ? 'Loading ...' : 'Search'}
-          </button>
-        </div>
         <div>
           <BillboardList listingsArray={listArray}> </BillboardList>
         </div>

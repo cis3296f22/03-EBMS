@@ -3,7 +3,7 @@ import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import Image from 'next/image'
 
 
-export default function ImageUpload({ uid, url, onUpload}) {
+export default function ImageUpload({onUpload, imageType}) {
     const supabase = useSupabaseClient()
     const [imageUrl, setImageUrl] = useState(null)
     const [uploading, setUploading] = useState(false)
@@ -27,9 +27,6 @@ export default function ImageUpload({ uid, url, onUpload}) {
         const filePath = `${fileName}`
 
         setImageUrl(url)
-
-        console.log(url)
-        console.log(filePath, file)
   
         let { data, error: uploadError } = await supabase.storage
           .from('billboard-images')
@@ -65,28 +62,21 @@ export default function ImageUpload({ uid, url, onUpload}) {
           />
         ) : (
           <Image
-            src="/images/default.png"
+            src={imageType == 0 ? "/images/default.png" : "/images/default2.png"}
             alt="Default Billboard Image"
             width={192}
             height={108}
           />
         )}
-        <div style={{ width: 108 }}>
-          <label className="button primary block" htmlFor="single">
-            {uploading ? 'Uploading ...' : 'Upload Image'}
-          </label>
-          <input
-            style={{
-              visibility: 'hidden',
-              position: 'absolute',
-            }}
+        <div>
+        <input
             type="file"
             id="single"
             accept="image/*"
             onChange={uploadImage}
             disabled={uploading}
           />
-        </div>
+          </div>
       </div>
     )
   }
