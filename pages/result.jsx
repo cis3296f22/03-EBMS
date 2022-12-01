@@ -8,17 +8,16 @@ export default function Buy() {
   const supabase = useSupabaseClient()
 
   const router = useRouter()
-  const {session_id} = router.query
 
   useEffect(() => {
     async function loadData() {
       console.log("data loading")
-      const { data, error } = await supabase.from('ad_bookings').update({'paymentVerified': true}).eq('id', 1).select()
+      const { data, error } = await supabase.from('ad_bookings').update({'paymentVerified': true}).eq('sessionId', router.query.session_id).select()
       if (error) console.log(error)
       console.log(data)
     }
-    loadData()
-  }, [])
+    if (router.query.session_id) loadData()
+  }, [router])
 
   return (
     <>
