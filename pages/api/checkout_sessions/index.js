@@ -22,18 +22,18 @@ export default async function handler(
       }
       // Create Checkout Sessions from body params.
       const params = {
-        submit_type: 'donate',
+        submit_type: 'pay',
         payment_method_types: ['card'],
         line_items: [
           {
-            name: 'Custom amount donation',
+            name: 'Purchase billboard',
             amount: formatAmountForStripe(amount, CURRENCY),
             currency: CURRENCY,
             quantity: 1,
           },
         ],
         success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${req.headers.origin}/donate-with-checkout`,
+        cancel_url: `${req.headers.origin}/`,
       }
       const checkoutSession =
         await stripe.checkout.sessions.create(params)
