@@ -1,9 +1,10 @@
-import ImageUpload from './ImageUpload'
+import ImageUpload from '../ImageUpload'
 import { useState, useEffect } from 'react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { Country, State, City } from "country-state-city"
 import Select from "react-select";
 import LocationPicker from './LocationPicker'
+import Link from 'next/link'
 
 export default function Create({session}) {
     const supabase = useSupabaseClient()
@@ -14,6 +15,7 @@ export default function Create({session}) {
     const [rate, setRate] = useState(null)
     const [lat, setLat] = useState(39.9526)
     const [lng, setLng] = useState(-75.1652)
+    const [location, setLocation] = useState("City, State")
 
     async function createBillBoard() {
         try {
@@ -31,6 +33,7 @@ export default function Create({session}) {
             updateInterval: 10,
             locationX: lat,
             locationY: lng,
+            location: location,
           }
 
           console.log(updates)
@@ -74,6 +77,13 @@ export default function Create({session}) {
         />
       </div>
       <div>
+        <label>Location</label>
+        <input
+        id="location"
+        value={location}
+        onChange={(e) => setLocation(e.target.value)} />
+      </div>
+      <div>
         <label>Latitude</label>
         <input
         id="lat"
@@ -102,7 +112,8 @@ export default function Create({session}) {
           onChange={(e) => setRate(e.target.value)}
         />
       </div>
-      <button
+      <Link href="/">
+        <button
           className="button primary block"
           onClick={() => {
             createBillBoard()
@@ -111,6 +122,7 @@ export default function Create({session}) {
         >
           {loading ? 'Loading ...' : 'Create Billboard'}
         </button>
+      </Link>
       </>
   )
 }

@@ -17,7 +17,9 @@ function Header() {
     {
       text: "Search",
       link: "/search"
-    }
+
+    },
+
   ]
 
   return (
