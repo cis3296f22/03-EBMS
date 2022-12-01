@@ -47,10 +47,10 @@ async function handleDisplay(id) {
       return (
         <div>
           <BillboardCard {...props} setCurrentSelection={setCurrentSelection}/>
-          <button className={styles.button} onClick={() => {handleDisplay(props.id)}}>
+          <button className={styles.button} onClick={(billboardSelection) => {router.push(`http://03-ebms.vercel.app/billboard/${props.id}`)}}>
             Display
           </button>
-          <button className={styles.button} onClick={(billboardSelection) => {router.push(`http://03-ebms.vercel.app/billboard/${props.id}`)}}>
+          <button className={styles.button} onClick={() => handleDelete(props.id)}>
             Delete
           </button>
         </div>
