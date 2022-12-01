@@ -41,7 +41,7 @@ export default function Search() {
           </button>
         </div>
         <div>
-          <BillboardList listingsArray={listArray} setCurrentSelection={(billboardSelection) => {router.push(`http://localhost:3000/billboard/${billboardSelection.id}`)}}> </BillboardList>
+          <BillboardList listingsArray={listArray} setCurrentSelection={(billboardSelection) => {router.push(`http://03-ebms.vercel.app/billboard/${billboardSelection.id}`)}}> </BillboardList>
         </div>
       </div>
     )
