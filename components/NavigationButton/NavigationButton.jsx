@@ -9,7 +9,9 @@ function NavigationButton({text, link}) {
   console.log(router)
 
   return (
-    <Link href={link} className={router.pathname == link ? styles.active + " " + styles.navButton : styles.navButton}>
+    <Link href={link} className={router.pathname == 
+    link ? styles.active + " " 
+    + styles.navButton : styles.navButton}>
       <div className={styles.textContainer}>
         {text}
       </div>
