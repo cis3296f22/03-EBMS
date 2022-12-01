@@ -11,7 +11,7 @@ async function handleLogin() {
     provider: 'google',
     options: {
       redirectTo: '/' //PUBLISHING
-      //redirectTo: 'http://localhost:3000' //FOR TESTING
+      // redirectTo: 'http://localhost:3000' //FOR TESTING
     }
   })
 }

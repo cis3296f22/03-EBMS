@@ -34,7 +34,7 @@ async function handleDisplay(id) {
     if (error) throw error
   } 
   catch (error) {
-    alert('Error updating the data!')
+    alert('No Ad on Billboard!')
     console.log(error)
   } 
 }

@@ -1,0 +1,1 @@
+1. get name from supabase to show up in Account/Welcome component
