@@ -26,6 +26,16 @@
 
 .textContainer {
   user-select: none;
+  
+}
+/* .navButton:active {
+  background-color: blue;
+  color:red;
+} */
+
+/* jacob is a god */
+.active {
+  font-weight: 600;
 }
 
 @media only screen and (min-width: 600px) {
