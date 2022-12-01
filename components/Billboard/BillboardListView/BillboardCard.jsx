@@ -13,7 +13,7 @@ function BillboardCard(props) {
         {props.name + " in "}  <b> {props.location} </b>
         <br/>
         { props.size } <br/>
-        <i> {props.rate} </i>
+        <i> ${props.rate} per {props.updateInterval} </i>
       </div>
     </div>
   )
