@@ -1,7 +1,8 @@
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import BillboardList from '../Billboard/BillboardList/BillboardList';
+import styles from './Search.module.css'
 
 export default function Search() {
     const supabase = useSupabaseClient()
@@ -15,7 +16,7 @@ export default function Search() {
 
         console.log(name)
         const myName = '%'+ name +'%'
-        const { data, error } = await supabase.from('billboard_listings').select().ilike('name', myName)
+        const { data, error } = await supabase.from('billboard_listings').select().or('name.ilike.' + myName + ', location.ilike.' + myName)
         setListArray(data)
         if (error) throw error
       } catch (error) {
@@ -27,16 +28,19 @@ export default function Search() {
     }
     
     return(
-      <>
-        <div>
-          <label>Billboard Name</label>
-          <input id="title" onChange={(e) => setName(e.target.value)}
-          />
+      <div className={styles.container}>
+        <div className={styles.searchContainer}>
+          <div className={styles.component}>
+            <input className={styles.searchInput} size={70} id="title" onChange={(e) => {
+              setName(e.target.value)}}/>
+          </div>
+          <button className={styles.searchButton} onClick={() => { getBillBoard({}) }} disabled={loading}>
+            {loading ? 'Loading ...' : 'Search'}
+          </button>
         </div>
-        <button className="button primary block" onClick={() => { getBillBoard({}) }} disabled={loading}>
-          {loading ? 'Loading ...' : 'Create Billboard'}
-        </button>
-        <BillboardList listingsArray={listArray}> </BillboardList>
-      </>
+        <div>
+          <BillboardList listingsArray={listArray}> </BillboardList>
+        </div>
+      </div>
     )
 }

@@ -4,7 +4,6 @@ import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import AccountBillboardList from '../Billboard/AccountBillboardList/AccountBillboardList';
 import styles from './MyBillboards.module.css'
 
-
 export default function Search({userId}) {
     const supabase = useSupabaseClient()
     const [loading, setLoading] = useState(false)

@@ -1,10 +1,9 @@
 import ImageUpload from '../ImageUpload'
 import { useState, useEffect } from 'react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
-import { Country, State, City } from "country-state-city"
-import Select from "react-select";
 import LocationPicker from './LocationPicker'
 import Link from 'next/link'
+import styles from './Create.module.css'
 
 export default function Create({session}) {
     const supabase = useSupabaseClient()
@@ -19,9 +18,30 @@ export default function Create({session}) {
 
     async function createBillBoard() {
         try {
-          const myName = '%'+ name +'%'
-
           setLoading(true)
+
+          const url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&result_type=street_address&key=AIzaSyCfr2w8UW9oWm4Q1kQfI2Uv_gkMHG62pIo"
+          let myState
+          let myCity
+          console.log(url)
+
+            try {
+              const response = await fetch(url);
+              const json = await response.json();
+              console.log(json)
+              const array = json.results[0].address_components
+              console.log(array)
+              for(var i = 0; i < array.length; i++){
+                if(array[i].types[0] == "locality")
+                  myCity = array[i].long_name
+                else if(array[i].types[0] == "administrative_area_level_1")
+                  myState = array[i].long_name
+              }
+            } catch (error) {
+              console.error(error);
+            }
+
+          const myLoc = myCity + ", " + myState
 
           const updates = {
             name: title,
@@ -33,14 +53,14 @@ export default function Create({session}) {
             updateInterval: 10,
             locationX: lat,
             locationY: lng,
-            location: location,
+            location: myLoc,
           }
 
           console.log(updates)
-    
+
           let { error } = await supabase.from('billboard_listings').insert(updates)
           if (error) throw error
-          alert('Testing Billboards Inserted')
+          alert('Billboard Created')
         } 
         catch (error) {
           alert('Error updating the data!')
@@ -62,67 +82,58 @@ export default function Create({session}) {
   }
 
   return(
-        <>
-        <ImageUpload
-            uid={user?.id}
-            onUpload={(url) => {
+    <div className={styles.container}>
+      <ImageUpload
+        onUpload={(url) => {
                 setImageUrl(url)
-              }}
-        />
-       <div>
-        <label>Title</label>
+                }}
+        imageType={0}/>
+      <div>
+        <label>Title </label>
         <input
           id="title"
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
       <div>
-        <label>Location</label>
+        <label>Rate </label>
         <input
-        id="location"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)} />
+          id="rate"
+          onChange={(e) => setRate(e.target.value)}/>
       </div>
       <div>
-        <label>Latitude</label>
+        <label>Latitude </label>
         <input
         id="lat"
         value={lat}
         onChange={(e) => setLatRef(e.target.value)} />
       </div>
       <div>
-        <label>Longitude</label>
+        <label>Longitude </label>
         <input
         id="lng"
         value={lng}
         onChange={(e) => setLngRef(e.target.value)} />
       </div>
-      <LocationPicker
-        updateLat={(val) => {
-          setLat(val)
-        }}
-        updateLng={(val) => {
-          setLng(val)
-        }}
-      />
-      <div>
-        <label>Rate</label>
-        <input
-          id="rate"
-          onChange={(e) => setRate(e.target.value)}
+      <div className={styles.map}>
+        <LocationPicker
+          updateLat={(val) => {
+            setLat(val)
+          }}
+          updateLng={(val) => {
+            setLng(val)
+          }}
         />
       </div>
       <Link href="/">
         <button
-          className="button primary block"
           onClick={() => {
             createBillBoard()
           }}
-          disabled={loading}
-        >
+          disabled={loading} className={styles.createButton}>
           {loading ? 'Loading ...' : 'Create Billboard'}
         </button>
       </Link>
-      </>
+    </div>
   )
 }

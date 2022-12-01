@@ -3,6 +3,7 @@ import React from 'react'
 import Header from '../components/Header/Header'
 import ListDetailsContainer from '../components/Billboard/ListDetailsContainer/ListDetailsContainer'
 import { useSession, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
+import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
 
 export default function Home() {
   const session = useSession()

@@ -38,6 +38,11 @@
   font-weight: 600;
 }
 
+/* jacob is a god */
+.active {
+  font-weight: 600;
+}
+
 @media only screen and (min-width: 600px) {
   .navButton {
     float:left;
