@@ -18,6 +18,8 @@
     transition: background-color 1s;
     border: none;
     font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
 .createButton:hover {
@@ -27,4 +29,8 @@
 
 .map{
     padding: 10px;
+}
+
+.createForm {
+    width: 1000px;
 }
