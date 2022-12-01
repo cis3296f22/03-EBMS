@@ -28,10 +28,10 @@ export default function Display() {
   useEffect(() => {
     
     if (router.query.billboardId) pollBillboardData();
-    
-  setTimeout(() => {
-    if (router.query.billboardId) pollBillboardData();
-  }, 10000)
+
+    setInterval(() => {
+      if (router.query.billboardId) pollBillboardData();
+    }, 10000)
   }, [router])
 
 
