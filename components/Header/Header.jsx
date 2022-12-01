@@ -4,16 +4,22 @@ import styles from './Header.module.css'
 import Logo from '../Logo/Logo'
 import SignIn from '../SignIn/SignIn'
 
+
+
 function Header() {
+  
   let navButtons = [
     {
       text: "Create",
-      link: "/create"
+      link: "/create",
+      
     },
     {
       text: "Search",
       link: "/search"
+
     },
+
   ]
 
   return (

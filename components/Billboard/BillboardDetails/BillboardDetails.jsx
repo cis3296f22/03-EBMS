@@ -4,10 +4,15 @@ import Link from 'next/link'
 import styles from './BillboardDetails.module.css'
 import ContextButtons from './ContextButtons/ContextButtons'
 
-import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
+import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
 
 const BillboardDetails = ({billboard}) => {
   // const [mapOpen, setMapOpen] = useState(false)
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: 'AIzaSyAw0-lPg9MzsRSAxXf9orluQr2tbtgCbA8',
+    libraries: ['geometry', 'drawing'],
+  });
 
   return (
     <div className={styles.billboardFullViewContainer}>
@@ -25,11 +30,9 @@ const BillboardDetails = ({billboard}) => {
             <ContextButtons billboardId={billboard.id}/>
           </div>
           <div className={styles.billboardMap}>
-            <LoadScript googleMapsApiKey="AIzaSyAw0-lPg9MzsRSAxXf9orluQr2tbtgCbA8">
-              <GoogleMap mapContainerStyle={{width: "100%", height: "400px"}} zoom={10} center={{lat: billboard.locationX, lng: billboard.locationY}}>
-                  <MarkerF position={{lat: billboard.locationX, lng: billboard.locationY}} clickable={false} draggable={false}/>
-              </GoogleMap>
-            </LoadScript>
+            {isLoaded && <GoogleMap mapContainerStyle={{width: "100%", height: "400px"}} zoom={10} center={{lat: billboard.locationX, lng: billboard.locationY}}>
+                <MarkerF position={{lat: billboard.locationX, lng: billboard.locationY}} clickable={false} draggable={false}/>
+            </GoogleMap>}
           </div>
         </>}
       </div>
