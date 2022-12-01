@@ -56,4 +56,4 @@ function LocationPicker({updateLat, updateLng}) {
   )
 }
 
-export default React.memo(MyComponent)
+export default React.memo(LocationPicker)
