@@ -1,14 +1,16 @@
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import BillboardList from '../Billboard/BillboardList/BillboardList';
 import styles from './Search.module.css'
+import { useRouter } from 'next/router'
 
 export default function Search() {
     const supabase = useSupabaseClient()
     const [loading, setLoading] = useState(false)
     const [name, setName] = useState(null) //Search term to be entered
     const [listArray, setListArray] = useState([]) //Returned array 
+    const router = useRouter()
 
     async function getBillBoard() {
       try {
@@ -39,7 +41,7 @@ export default function Search() {
           </button>
         </div>
         <div>
-          <BillboardList listingsArray={listArray}> </BillboardList>
+          <BillboardList listingsArray={listArray} setCurrentSelection={(billboardSelection) => {router.push(`http://localhost:3000/billboard/${billboardSelection.id}`)}}> </BillboardList>
         </div>
       </div>
     )
