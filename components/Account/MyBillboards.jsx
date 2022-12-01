@@ -1,8 +1,9 @@
 
 import { useState, useEffect } from 'react'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
-import BillboardList from '../Billboard/BillboardList/BillboardList';
+import AccountBillboardList from '../Billboard/AccountBillboardList/AccountBillboardList';
 import styles from './MyBillboards.module.css'
+
 
 export default function Search({userId}) {
     const supabase = useSupabaseClient()
@@ -32,7 +33,7 @@ export default function Search({userId}) {
     return(
       <div className={styles.container}>
         <div>
-          <BillboardList listingsArray={listArray}> </BillboardList>
+          <AccountBillboardList listingsArray={listArray}> </AccountBillboardList>
         </div>
       </div>
     )
