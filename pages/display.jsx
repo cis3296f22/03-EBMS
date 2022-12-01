@@ -11,7 +11,7 @@ export default function Display() {
 
   async function pollBillboardData() {
     try {
-      const { data, error } = await supabase.from('ad_bookings').select().eq('purchaseVerified', true).order('createdAt', { ascending: false }).select('imgUrl').eq('billboardId', parseInt(router.query.billboardId))
+      const { data, error } = await supabase.from('ad_bookings').select().eq('paymentVerified', true).order('createdAt', { ascending: false }).select('imgUrl').eq('billboardId', parseInt(router.query.billboardId))
       if(data === null)
         alert('No Ad On Billboard')
       else{
