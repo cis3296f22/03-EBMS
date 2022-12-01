@@ -3,8 +3,7 @@ import React from 'react'
 import Header from '../components/Header/Header'
 import { useSession, useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 import Account from '../components/Account/Account'
-import Welcome from '../components/Account/Welcome/Welcome'
-import MyActivesContainer from '../components/Account/MyActivesContainer/MyActivesContainer'
+
 
 
 
@@ -23,8 +22,8 @@ export default function MyAccount() {
             <link rel="icon" href="/adorado.ico" />
         </Head>
         <Header/>
-        <Welcome/>
-        <MyActivesContainer session={session}/>
+        
+        <Account session={session}/>
         
         </div>
     )
