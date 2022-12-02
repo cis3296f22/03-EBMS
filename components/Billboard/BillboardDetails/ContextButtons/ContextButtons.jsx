@@ -9,7 +9,7 @@ export default function ContextButtons ({billboardId}) {
   let route = `/billboard/${billboardId}`
 
   function copyToClipboard() {
-    navigator.clipboard.writeText("http://localhost:3000"+route)
+    navigator.clipboard.writeText("http://03-ebms.vercel.app"+route)
     alert("Copied to clipboard!")
   }
 
