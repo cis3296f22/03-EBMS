@@ -4,14 +4,16 @@ import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import LocationPicker from './LocationPicker'
 import Link from 'next/link'
 import styles from './Create.module.css'
+import BillboardCard from '../Billboard/BillboardListView/BillboardCard'
 
 export default function Create({session}) {
     const supabase = useSupabaseClient()
     const user = useUser()
     const [loading, setLoading] = useState(false)
-    const [title, setTitle] = useState(null)
-    const [image_url, setImageUrl] = useState(null)
-    const [rate, setRate] = useState(null)
+    const [name, setName] = useState("Name")
+    const [imgUrl, setImgUrl] = useState(null)
+    const [rate, setRate] = useState(0)
+    const [size, setSize] = useState("Size by Size")
     const [lat, setLat] = useState(39.9526)
     const [lng, setLng] = useState(-75.1652)
     const [location, setLocation] = useState("City, State")
@@ -41,19 +43,18 @@ export default function Create({session}) {
               console.error(error);
             }
 
-          const myLoc = myCity + ", " + myState
+          if (myCity && myState) setLocation(myCity + ", " + myState)
 
           const updates = {
-            name: title,
+            name: name,
             rate: rate,
-            size: "800x400",
-            location: "City, State",
-            imgUrl: image_url,
+            size: size,
+            location: location,
+            imgUrl: imgUrl,
             ownerId: user?.id,
             updateInterval: 10,
             locationX: lat,
             locationY: lng,
-            location: myLoc,
           }
 
           console.log(updates)
@@ -83,57 +84,47 @@ export default function Create({session}) {
 
   return(
     <div className={styles.container}>
-      <ImageUpload
-        onUpload={(url) => {
-                setImageUrl(url)
-                }}
-        imageType={0}/>
-      <div>
-        <label>Title </label>
-        <input
-          id="title"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Rate </label>
-        <input
-          id="rate"
-          onChange={(e) => setRate(e.target.value)}/>
-      </div>
-      <div>
-        <label>Latitude </label>
-        <input
-        id="lat"
-        value={lat}
-        onChange={(e) => setLatRef(e.target.value)} />
-      </div>
-      <div>
-        <label>Longitude </label>
-        <input
-        id="lng"
-        value={lng}
-        onChange={(e) => setLngRef(e.target.value)} />
-      </div>
-      <div className={styles.map}>
-        <LocationPicker
-          updateLat={(val) => {
-            setLat(val)
-          }}
-          updateLng={(val) => {
-            setLng(val)
-          }}
-        />
-      </div>
-      <Link href="/">
-        <button
-          onClick={() => {
-            createBillBoard()
-          }}
-          disabled={loading} className={styles.createButton}>
-          {loading ? 'Loading ...' : 'Create Billboard'}
-        </button>
-      </Link>
+      <form className={styles.createForm} onSubmit={createBillBoard}>
+        <h3> Create </h3>
+        <ImageUpload
+          onUpload={(url) => { setImgUrl(url) }}
+          imageType={0}/>
+        <div>
+          <label>Name </label>
+          <input id="name" onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Location </label>
+          <input id="location" onChange={(e) => setLocation(e.target.value)} value={location}/>
+        </div>
+        <div>
+          <label>Size </label>
+          <input id="size" onChange={(e) => setSize(e.target.value)}/>
+        </div>
+        <div>
+          <label>Rate </label>
+          <input type="number" id="rate" onChange={(e) => setRate(e.target.value)}/>
+        </div>
+        <div>
+          <label>Latitude </label>
+          <input id="lat" value={lat} onChange={(e) => setLatRef(e.target.value)} />
+        </div>
+        <div>
+          <label>Longitude </label>
+          <input id="lng" value={lng} onChange={(e) => setLngRef(e.target.value)} />
+        </div>
+        <div className={styles.map}>
+          <LocationPicker updateLat={(val) => { setLat(val) }} updateLng={(val) => { setLng(val) }}/>
+        </div>
+        <h3> Preview </h3>
+        <BillboardCard name={name} rate={rate} size={size} location={location} imgUrl={imgUrl} updateInterval={"second"}/>
+        <Link href="/">
+          <button type="submit" onClick={createBillBoard} disabled={loading} className={styles.createButton}>
+            {loading ? 'Loading ...' : 'Create Billboard'}
+          </button>
+        </Link>
+      </form>
     </div>
   )
 }

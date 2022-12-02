@@ -1,5 +1,5 @@
 import React from 'react'
-import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
+import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '700px',
@@ -16,7 +16,13 @@ const position = {
     lng: -75.1652
 }
 
-function MyComponent({updateLat, updateLng}) {
+function LocationPicker({updateLat, updateLng}) {
+  
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: 'AIzaSyAw0-lPg9MzsRSAxXf9orluQr2tbtgCbA8',
+    libraries: ['geometry', 'drawing'],
+  });
 
     const onLoad = marker => {
         console.log('marker: ', marker)
@@ -32,9 +38,6 @@ function MyComponent({updateLat, updateLng}) {
 
   return (
     <div>
-        <LoadScript
-        googleMapsApiKey="AIzaSyAw0-lPg9MzsRSAxXf9orluQr2tbtgCbA8"
-        >
         <GoogleMap
             id="marker-example"
             mapContainerStyle={containerStyle}
@@ -49,9 +52,8 @@ function MyComponent({updateLat, updateLng}) {
             onDragEnd={getMarkerLocation}
             />
         </GoogleMap>
-        </LoadScript>
     </div>
   )
 }
 
-export default React.memo(MyComponent)
+export default React.memo(LocationPicker)

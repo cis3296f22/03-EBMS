@@ -2,9 +2,11 @@ import React from 'react'
 import BillboardCard from '../BillboardListView/BillboardCard'
 import styles from './AccountBillboardList.module.css'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
+import { useRouter } from 'next/router'
 
 const BillboardList = ({ listingsArray, setCurrentSelection }) => {
   const supabase = useSupabaseClient()
+  const router = useRouter()
 
   if (listingsArray.length == 0) return (<>No billboards</>)
 
@@ -28,7 +30,7 @@ async function handleDisplay(id) {
     if(data === null)
       alert('No Ad On Billboard')
     else{
-      console.log(data[0].imUrl)
+      console.log(data[0].imgUrl)
       window.open(data[0].imgUrl, '_blank')
     }
     if (error) throw error
@@ -45,10 +47,10 @@ async function handleDisplay(id) {
       return (
         <div>
           <BillboardCard {...props} setCurrentSelection={setCurrentSelection}/>
-          <button className={styles.button} onClick={() => {handleDisplay(props.id)}}>
+          <button className={styles.button} onClick={(billboardSelection) => {router.push(`http://03-ebms.vercel.app/display?billboardId=${props.id}`)}}>
             Display
           </button>
-          <button className={styles.button} onClick={() => {handleDelete(props.id)}}>
+          <button className={styles.button} onClick={() => handleDelete(props.id)}>
             Delete
           </button>
         </div>
